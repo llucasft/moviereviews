@@ -1,9 +1,16 @@
+from re import S
 from django.shortcuts import render
 from django.http import HttpResponse
 
 
 def home(request):
-    return render(request, 'home.html', {'name':'Greg Lim'})
+    searchTerm = request.GET.get('searchMovie')
+    return render(request, 'home.html', {'searchTerm':searchTerm})
+
+
+def signup(request):
+    email = request.GET.get('email')
+    return render(request, 'signup.html', {'email':email})
 
 
 def about(request):
